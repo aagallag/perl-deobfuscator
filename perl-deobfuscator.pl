@@ -49,17 +49,13 @@ sub deobfuscat {
 	while( my $line = $in_fh->getline() ) {
 		my $changed = 0;
 
-		# Keep looping until all instances of '\x00' have been replaced with ascii char
-		while (my $idx = index($line, "\\x")) {
+		# Keep looping until all instances of '\xHEX' have been replaced with ascii char
+		while ($line=~ /(\\x[0-9A-F]{2})/g) {
+			# Set the starting index
+			my $idx = pos($line)-length($1);
 
-			# return if '\x' is not detected in string
-			if ($idx == -1) {
-				last;
-			}
-
-			# isolate the hex numbers (assumes two digits, \x00 works, but \x0 will result in bad behavior)
+			# isolate the hex numbers from the rest of the string
 			my $char = substr($line, $idx+2, 2);
-			my $find = "\\x".$char;
 
 			# convert the hex digits to decimal
 			my $decvalue =  hex($char);
@@ -67,14 +63,14 @@ sub deobfuscat {
 			# convert the decimal value to ASCII character
 			$char = chr($decvalue);
 
-			# replace the 
+			# replace the hex characters with ascii character
 			$line = substr($line, 0, $idx) . $char . substr($line, $idx+4);
 
 			# set changed to true
 			$changed = 1;
 
 			# increase the character counter
-			$deobfuscated_chars = $deobfuscated_chars + 1
+			$deobfuscated_chars = $deobfuscated_chars + 1;
 		}
 
 		# write to output file
