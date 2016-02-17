@@ -111,7 +111,20 @@ sub main {
 
 	# Missing optional arg, use the default
 	if (length($outputfile) == 0) {
-		$outputfile = "deobfuscated_".$inputfile;
+
+		# Position of filename in string, ex: ./scripts/hello.pl
+		my $idx = 0;
+
+		# Keep looping until there are now more slashes in filename
+		while ($inputfile=~ /(\/)/g) {
+			if (index($inputfile, "//") == -1) {
+				# Get position of filename
+				$idx = pos($inputfile)-length($1)+1;
+			}
+		}
+
+		# Build new string
+		$outputfile = substr($inputfile, 0, $idx) . "deobfuscated_" . substr($inputfile, $idx, length($inputfile) - $idx);
 	}
 
 	# Run the deobfuscator
