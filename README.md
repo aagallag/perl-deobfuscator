@@ -7,10 +7,26 @@ the "String Mangling" option enabled.  Currently, this script will not be
 able to unobfuscate anything more complex.
 
 ## How to use
+
+### Clone repository
 ```
 git clone https://github.com/aagallag/perl-deobfuscator.git
+```
+
+### Execute deobfuscator on sample script
+```
 cd perl-deobfuscator
-perl-deobfuscator -in obfuscated_perl.pl
+perl-deobfuscator -in sample/obfuscated_test.pl
+```
+
+### Expected output
+```
+Perl Deobfuscator, Copyright (C) 2016  Aaron Gallagher
+This is free software, and you are welcome to redistribute it
+
+Deobfuscated Lines: 3
+Deobfuscated Characters: 29
+Completed deobfuscation, changes written to: sample/deobfuscated_obfuscated_test.pl
 ```
 
 ## License
