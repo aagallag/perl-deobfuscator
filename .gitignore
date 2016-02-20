@@ -18,3 +18,5 @@ nytprof.out
 *.o
 *.bs
 /_eumm/
+
+/sample/deobfuscated_obfuscated_test.pl
