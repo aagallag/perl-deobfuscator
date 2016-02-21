@@ -8,18 +8,18 @@ able to unobfuscate anything more complex.
 
 ## How to use
 
-### Clone repository
+##### Clone repository
 ```
 git clone https://github.com/aagallag/perl-deobfuscator.git
 ```
 
-### Execute deobfuscator on sample script
+##### Execute deobfuscator on sample script
 ```
 cd perl-deobfuscator
 perl-deobfuscator -in sample/obfuscated_test.pl
 ```
 
-### Expected output
+##### Expected output
 ```
 Perl Deobfuscator, Copyright (C) 2016  Aaron Gallagher
 This is free software, and you are welcome to redistribute it
