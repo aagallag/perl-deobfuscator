@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Perl-deobfuscator : Perl Deobfuscator">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Perl-deobfuscator</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/aagallag/perl-deobfuscator">View on GitHub</a>
+
+          <h1 id="project_title">Perl-deobfuscator</h1>
+          <h2 id="project_tagline">Perl Deobfuscator</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/aagallag/perl-deobfuscator/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/aagallag/perl-deobfuscator/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="perl-deobfuscator" class="anchor" href="#perl-deobfuscator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Perl Deobfuscator</h1>
+
+<p><a href="https://travis-ci.org/aagallag/perl-deobfuscator"><img src="https://travis-ci.org/aagallag/perl-deobfuscator.svg?branch=master" alt="Build Status"></a>
+<a href="https://gitter.im/aagallag/perl-deobfuscator?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/aagallag/perl-deobfuscator.svg" alt="Join the chat at https://gitter.im/aagallag/perl-deobfuscator"></a></p>
+
+<h2>
+<a id="features-and-limitations" class="anchor" href="#features-and-limitations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features and Limitations</h2>
+
+<p>Detects strings that have been mangled and makes them human-readable.
+Only tested against the Perl obfuscator at <a href="http://perlobfuscator.com/">http://perlobfuscator.com/</a> with
+the "String Mangling" option enabled.  Currently, this script will not be
+able to unobfuscate anything more complex.</p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h2>
+
+<h5>
+<a id="clone-repository" class="anchor" href="#clone-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clone repository</h5>
+
+<pre><code>git clone https://github.com/aagallag/perl-deobfuscator.git
+</code></pre>
+
+<h5>
+<a id="install-securityperldeobfuscator-perlmodule" class="anchor" href="#install-securityperldeobfuscator-perlmodule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install Security::PerlDeobfuscator PerlModule</h5>
+
+<pre><code>cd perl-deobfuscator
+perl Makefile.PL
+make
+sudo make install
+</code></pre>
+
+<h5>
+<a id="execute-deobfuscator-on-sample-script" class="anchor" href="#execute-deobfuscator-on-sample-script" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Execute deobfuscator on sample script</h5>
+
+<pre><code>cd perl-deobfuscator
+./perl-deobfuscator-cli.pl -in sample/obfuscated_test.pl
+</code></pre>
+
+<h5>
+<a id="expected-output" class="anchor" href="#expected-output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Expected output</h5>
+
+<pre><code>Perl Deobfuscator, Copyright (C) 2016  Aaron Gallagher
+This is free software, and you are welcome to redistribute it
+
+Deobfuscated Lines: 3
+Deobfuscated Characters: 29
+Completed deobfuscation, changes written to: sample/deobfuscated_obfuscated_test.pl
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Perl Deobfuscator
+    Copyright (C) 2016  Aaron Gallagher</p>
+
+<pre><code>This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+
+Contact: Aaron Gallagher &lt;aaron.b.gallagher@gmail.com&gt;
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Perl-deobfuscator maintained by <a href="https://github.com/aagallag">aagallag</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
