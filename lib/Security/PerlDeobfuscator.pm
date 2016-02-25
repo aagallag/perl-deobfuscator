@@ -22,16 +22,7 @@ our $VERSION = '0.03';
 use strict;
 use warnings;
 use Getopt::Long qw(GetOptions);
-###############################################################################
-my $title = "Perl Deobfuscator, Copyright (C) 2016  Aaron Gallagher\n";
-my $license_sum = "This is free software, and you are welcome to redistribute it\n";
-my $info = $title . $license_sum . "\n";
-my $help = "Usage:\n\t$0 --in INPUT_FILE\nOptional Parameters:\n\t--out OUTPUT_FILE (Default: deobfuscated_{INPUT_FILE})\n";
-
-#my $inputfile = "";
-#my $outputfile = "";
-#my $modified_lines = 0;
-#my $deobfuscated_chars = 0;
+require Carp;
 ###############################################################################
 
 ###############################################################################
