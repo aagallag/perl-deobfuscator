@@ -17,8 +17,8 @@
 #
 # 	Contact: Aaron Gallagher <aaron.b.gallagher@gmail.com>
 ###############################################################################
-package Security::PerlDeobfuscator
-our $VERSION   = '0.03';
+package Security::PerlDeobfuscator;
+our $VERSION = '0.03';
 use strict;
 use warnings;
 use Getopt::Long qw(GetOptions);
@@ -27,23 +27,39 @@ my $title = "Perl Deobfuscator, Copyright (C) 2016  Aaron Gallagher\n";
 my $license_sum = "This is free software, and you are welcome to redistribute it\n";
 my $info = $title . $license_sum . "\n";
 my $help = "Usage:\n\t$0 --in INPUT_FILE\nOptional Parameters:\n\t--out OUTPUT_FILE (Default: deobfuscated_{INPUT_FILE})\n";
-my $inputfile = "";
-my $outputfile = "";
-my $modified_lines = 0;
-my $deobfuscated_chars = 0;
+
+#my $inputfile = "";
+#my $outputfile = "";
+#my $modified_lines = 0;
+#my $deobfuscated_chars = 0;
 ###############################################################################
 
 ###############################################################################
-# deobfuscat - Deobfuscats the perl strings
+# new - Constructor for the Perl Deobfuscator
 # infilename - Name of file to deobfuscat
 # outfilename - Name of human-readable file to write deobfuscated code to
 ###############################################################################
+sub new {
+    my ($class, $infilename, $outfilename, @args) = @_ or Carp::croak("Missing Input or Output file");
+
+    bless {
+        infilename         => $infilename,
+        outfilename        => $outfilename,
+        modified_lines     => 0,
+        deobfuscated_chars => 0,
+        @args
+    }, $class;
+}
+
+###############################################################################
+# deobfuscat - Deobfuscats the perl strings
+###############################################################################
 sub deobfuscat {
-	my ($infilename, $outfilename) = @_;
+	my ($self) = @_;
 
 	# Open both files
-	open(my $in_fh, '<', $infilename);
-	open(my $out_fh, '>', $outfilename);
+	open(my $in_fh, '<', $self->{infilename});
+	open(my $out_fh, '>', $self->{outfilename});
 
 	# Read contents of file, one line at a times
 	while( my $line = $in_fh->getline() ) {
@@ -70,7 +86,7 @@ sub deobfuscat {
 			$changed = 1;
 
 			# increase the character counter
-			$deobfuscated_chars = $deobfuscated_chars + 1;
+			$self->{deobfuscated_chars} = $self->{deobfuscated_chars} + 1;
 		}
 
 		# write to output file
@@ -78,7 +94,7 @@ sub deobfuscat {
 
 		# if changed, increase counter
 		if ($changed) {
-			$modified_lines = $modified_lines + 1;
+			$self->{modified_lines} = $self->{modified_lines} + 1;
 		}
 	}
 
