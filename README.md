@@ -1,7 +1,7 @@
 # Perl Deobfuscator
 
-[![Join the chat at https://gitter.im/aagallag/perl-deobfuscator](https://badges.gitter.im/aagallag/perl-deobfuscator.svg)](https://gitter.im/aagallag/perl-deobfuscator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/aagallag/perl-deobfuscator.svg?branch=master)](https://travis-ci.org/aagallag/perl-deobfuscator)
+[![Join the chat at https://gitter.im/aagallag/perl-deobfuscator](https://badges.gitter.im/aagallag/perl-deobfuscator.svg)](https://gitter.im/aagallag/perl-deobfuscator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Features and Limitations
 Detects strings that have been mangled and makes them human-readable.
