@@ -1,4 +1,5 @@
 # Perl Deobfuscator
+[![Build Status](https://travis-ci.org/aagallag/perl-deobfuscator.svg?branch=master)](https://travis-ci.org/aagallag/perl-deobfuscator)
 
 ## Features and Limitations
 Detects strings that have been mangled and makes them human-readable.
