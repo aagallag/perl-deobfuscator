@@ -13,10 +13,18 @@ able to unobfuscate anything more complex.
 git clone https://github.com/aagallag/perl-deobfuscator.git
 ```
 
+##### Install Security::PerlDeobfuscator PerlModule
+```
+cd perl-deobfuscator
+perl Makefile.PL
+make
+sudo make install
+```
+
 ##### Execute deobfuscator on sample script
 ```
 cd perl-deobfuscator
-perl-deobfuscator -in sample/obfuscated_test.pl
+./perl-deobfuscator-cli.pl -in sample/obfuscated_test.pl
 ```
 
 ##### Expected output
