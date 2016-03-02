@@ -32,7 +32,7 @@ cd perl-deobfuscator
 
 ##### Expected output
 ```
-Perl Deobfuscator, Copyright (C) 2016  Aaron Gallagher
+Perl Deobfuscator v0.03, Copyright (C) 2016  Aaron Gallagher
 This is free software, and you are welcome to redistribute it
 
 Deobfuscated Lines: 3
