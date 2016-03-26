@@ -24,6 +24,10 @@ use warnings;
 use Getopt::Long qw(GetOptions);
 require Carp;
 ###############################################################################
+my $SLASHX_PLACEHOLDER = "\\___";
+my $ASCII_START = 32;
+my $ASCII_END   = 126;
+###############################################################################
 
 ###############################################################################
 # new - Constructor for the Perl Deobfuscator
@@ -67,17 +71,36 @@ sub deobfuscat {
 			# convert the hex digits to decimal
 			my $decvalue =  hex($char);
 
-			# convert the decimal value to ASCII character
-			$char = chr($decvalue);
+			# Invalid ASCII character
+			if ($decvalue < $ASCII_START or $decvalue > $ASCII_END) {
+				# insert placeholder string, replace it with \x again later (total hack, part 1)
+				$line = substr($line, 0, $idx) . "\\___" . substr($line, $idx+2);
+			}
 
-			# replace the hex characters with ascii character
-			$line = substr($line, 0, $idx) . $char . substr($line, $idx+4);
+			# Valid ASCII character
+			else {
+				# convert the decimal value to ASCII character
+				$char = chr($decvalue);
 
-			# set changed to true
-			$changed = 1;
+				# replace the hex characters with ascii character
+				$line = substr($line, 0, $idx) . $char . substr($line, $idx+4);
 
-			# increase the character counter
-			$self->{deobfuscated_chars} = $self->{deobfuscated_chars} + 1;
+				# set changed to true
+				$changed = 1;
+
+				# increase the character counter
+				$self->{deobfuscated_chars} = $self->{deobfuscated_chars} + 1;
+
+			}
+		}
+
+		# Cleanup the placeholder strings, switch them back to '\x' (total hack, part 2)
+		while ($line=~ /(\\___)/g) {
+			# Set the starting index
+			my $idx = pos($line)-length($1);
+
+			# put '\x' inplace of '\___'
+			$line = substr($line, 0, $idx) . "\\x" . substr($line, $idx+4);
 		}
 
 		# write to output file
